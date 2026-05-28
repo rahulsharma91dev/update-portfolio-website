@@ -1,16 +1,22 @@
 @use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 
 .hero {
   min-height: 100vh;
   background: $dark;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;  // ← split layout
   align-items: center;
+  gap: 4rem;
   padding: 8rem $section-pad-x 4rem;
   position: relative;
   overflow: hidden;
 
+  // ← stack on mobile
   @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
     padding: 7rem $section-pad-x-mobile 4rem;
+    text-align: center;
   }
 }
 
@@ -21,6 +27,7 @@
     linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
+  z-index: 0;
 }
 
 .glow1 {
@@ -29,6 +36,7 @@
   width: 700px; height: 700px;
   background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, transparent 65%);
   pointer-events: none;
+  z-index: 0;
 }
 
 .glow2 {
@@ -37,12 +45,17 @@
   width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(0, 180, 255, 0.07) 0%, transparent 65%);
   pointer-events: none;
+  z-index: 0;
 }
 
+// LEFT SIDE
 .content {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+
+  @media (max-width: $bp-mobile) {
+    order: 2;   // ← image on top, text below on mobile
+  }
 }
 
 .tag {
@@ -60,28 +73,34 @@
 }
 
 .name {
-  @include display-heading;
-  font-size: clamp(5rem, 12vw, 11rem);
+  font-family: $font-display;
+  font-size: clamp(4rem, 8vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
   color: $white;
 }
 
 .cyan { color: $cyan; }
 
 .role {
-  @include display-heading;
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-family: $font-display;
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
   color: rgba(255, 255, 255, 0.2);
   letter-spacing: 0.08em;
   margin-top: 0.5rem;
 }
 
 .desc {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
-  max-width: 480px;
-  margin-top: 2rem;
+  max-width: 440px;
+  margin-top: 1.5rem;
   line-height: 1.75;
   font-weight: 300;
+
+  @media (max-width: $bp-mobile) {
+    margin: 1.5rem auto 0;
+  }
 }
 
 .actions {
@@ -89,9 +108,13 @@
   gap: 1.2rem;
   margin-top: 2.5rem;
 
+  @media (max-width: $bp-mobile) {
+    justify-content: center;
+  }
+
   @media (max-width: 480px) {
     flex-direction: column;
-    width: fit-content;
+    align-items: center;
   }
 }
 
@@ -131,6 +154,99 @@
   }
 }
 
+// RIGHT SIDE — Image
+.imageWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $bp-mobile) {
+    order: 1;   // ← image appears first on mobile
+  }
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  //max-width: 520px;
+  aspect-ratio: 5 / 4;   // ← maintains shape on all screens
+  //overflow: hidden;
+
+  @media (max-width: $bp-mobile) {
+    max-width: 400px;
+    //aspect-ratio: 1 / 1;
+  }
+}
+
+.image {
+  //object-fit: cover;
+  //object-position: center top;  // ← keeps face visible
+  filter: grayscale(20%);
+  transition: filter 0.4s ease;
+
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+.imageBorder {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.imageGlow {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(8, 12, 16, 0.8), transparent);
+  z-index: 2;
+}
+
+// Floating "Available" badge
+.badge {
+  position: absolute;
+  bottom: -1.2rem;
+  left: -1.2rem;
+  background: $dark3;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.08em;
+  z-index: 4;
+
+  @media (max-width: $bp-mobile) {
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  background: $cyan;
+  border-radius: 50%;
+  box-shadow: 0 0 8px $cyan;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+// Scroll indicator
 .scroll {
   position: absolute;
   bottom: 2.5rem;
@@ -140,6 +256,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  z-index: 2;
 
   span {
     font-family: $font-mono;
@@ -154,23 +271,28 @@
   width: 1px;
   height: 50px;
   background: linear-gradient(to bottom, $cyan, transparent);
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: scrollPulse 1.5s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes scrollPulse {
   0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
   50%       { opacity: 1;   transform: scaleY(1); }
 }
-.image{
-  border:1px solid $cyan;
-  padding:1em;
-  border-radius: 4px 50px;
-  background-color: $cyan-glow;
-  margin-left: 40px;
-  margin-top: -50px;
-  img{
 
-    border-radius:4px 50px;
-    background-blend-mode:hard-light;
-  }
-}
+
+// .image{
+//   border:1px solid $cyan;
+//   padding:1em;
+//   border-radius: 4px 50px;
+//   background-color: $cyan-glow;
+//   margin-left: 40px;
+//   margin-top: -50px;
+//   width: 100%;
+//   position: relative;
+//   img{
+//     position: static !important;
+  
+//     border-radius:4px 50px;
+//     background-blend-mode:hard-light;
+//   }
+// }
