@@ -1,0 +1,176 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  min-height: 100vh;
+  background: $dark;
+  display: flex;
+  align-items: center;
+  padding: 8rem $section-pad-x 4rem;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $bp-mobile) {
+    padding: 7rem $section-pad-x-mobile 4rem;
+  }
+}
+
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glow1 {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -20%; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0, 180, 255, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $cyan;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+
+  &::before {
+    content: '// ';
+    opacity: 0.4;
+  }
+}
+
+.name {
+  @include display-heading;
+  font-size: clamp(5rem, 12vw, 11rem);
+  color: $white;
+}
+
+.cyan { color: $cyan; }
+
+.role {
+  @include display-heading;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.08em;
+  margin-top: 0.5rem;
+}
+
+.desc {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 480px;
+  margin-top: 2rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: fit-content;
+  }
+}
+
+.btnPrimary {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  background: $cyan;
+  color: $dark;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $white;
+    transform: translateY(-2px);
+  }
+}
+
+.btnSecondary {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $cyan;
+    color: $cyan;
+    transform: translateY(-2px);
+  }
+}
+
+.scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  span {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, $cyan, transparent);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+.image{
+  border:1px solid $cyan;
+  padding:1em;
+  border-radius: 4px 50px;
+  background-color: $cyan-glow;
+  margin-left: 40px;
+  margin-top: -50px;
+  img{
+
+    border-radius:4px 50px;
+    background-blend-mode:hard-light;
+  }
+}

@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem $section-pad-x;
+  background: rgba(8, 12, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.08);
+
+  @media (max-width: $bp-mobile) {
+    padding: 1rem $section-pad-x-mobile;
+  }
+}
+
+.logo {
+  font-family: $font-mono;
+  font-size: 1.1rem;
+  color: $cyan;
+  letter-spacing: 0.05em;
+
+  span:first-child { color: $white; }
+}
+
+.blink {
+  color: $cyan;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+
+  a {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color $transition-fast;
+
+    &:hover { color: $cyan; }
+  }
+
+  @media (max-width: $bp-mobile) { display: none; }
+}
+
+.cta {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $cyan;
+  border: 1px solid $cyan;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $cyan;
+    color: $dark;
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+
+.experience {
+  @include section-padding;
+  background: $dark;
+  position: relative;
+}
+
+.heading {
+  @include display-heading;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin:1rem auto 4rem auto;
+  @include max-width;
+
+}
+
+.timeline {
+  max-width: 800px;
+  position: relative;
+  margin:0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, $cyan, rgba(0, 229, 255, 0.1));
+  }
+}
+
+.item {
+  padding-left: 3rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+
+  &:last-child { padding-bottom: 0; }
+}
+
+.dot {
+  position: absolute;
+  left: -5px; top: 4px;
+  width: 11px; height: 11px;
+  background: $cyan;
+  border-radius: 50%;
+  box-shadow: 0 0 12px $cyan;
+}
+
+.date {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: $cyan;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  font-family: $font-display;
+  font-size: 1.9rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.company {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.75;
+  font-weight: 300;
+}

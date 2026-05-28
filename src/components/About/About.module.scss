@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+.about {
+  @include section-padding;
+  background: $light;
+  color: $text-dark;
+  position: relative;
+  overflow: hidden;
+}
+
+.accent {
+  position: absolute;
+  top: -4rem; right: -4rem;
+  font-family: $font-display;
+  font-size: 18rem;
+  color: rgba(0, 229, 255, 0.06);
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  @include max-width;
+  margin:0 auto;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.heading {
+  @include display-heading;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  color: $text-dark;
+  margin-top: 1rem;
+
+  em {
+    font-style: normal;
+    color: $cyan-dim;
+  }
+}
+
+.text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: $text-body;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid $light2;
+}
+
+.statNum {
+  font-family: $font-display;
+  font-size: 3rem;
+  color: $text-dark;
+  line-height: 1;
+
+  // Append "+" styling handled inline in data
+}
+
+.statLabel {
+  @include mono-label;
+  color: $text-muted;
+  margin-top: 0.3rem;
+}

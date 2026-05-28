@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+// ============================================
+// GLOBAL STYLES
+// ============================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cyan: #{$cyan};
+  --cyan-dim: #{$cyan-dim};
+  --dark: #{$dark};
+  --dark2: #{$dark2};
+  --dark3: #{$dark3};
+  --light: #{$light};
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  background: $dark;
+  color: $white;
+  cursor: none;
+  overflow-x: hidden;
+
+  @media (max-width: $bp-mobile) {
+    cursor: auto;
+  }
+}
+
+// Scrollbar
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: $dark; }
+::-webkit-scrollbar-thumb { background: $cyan; border-radius: 2px; }
+
+// Section label utility
+.section-label {
+  @include mono-label;
+  color: $cyan-dim;
+  margin-bottom: 1rem;
+
+  &--dark {
+    color: $cyan;
+    opacity: 0.8;
+  }
+}
+
+// Utility
+.max-w { @include max-width; }

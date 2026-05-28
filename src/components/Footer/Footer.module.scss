@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background: $dark;
+  padding: 2rem $section-pad-x;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 229, 255, 0.08);
+
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem $section-pad-x-mobile;
+  }
+}
+
+.text {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.1em;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.05em;
+}

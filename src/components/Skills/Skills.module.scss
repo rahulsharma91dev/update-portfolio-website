@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+
+.skills {
+  @include section-padding;
+  background: $dark2;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  @include max-width;
+  margin: 0 auto 4rem auto;
+}
+
+.heading {
+  @include display-heading;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-top: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  @include max-width;
+  margin:0 auto
+}
+
+.chip {
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  background: rgba(0, 229, 255, 0.03);
+  cursor: default;
+  transition: background $transition-medium, border-color $transition-medium;
+
+  &:hover {
+    background: rgba(0, 229, 255, 0.08);
+
+    .name { color: $cyan; }
+  }
+}
+
+.icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color $transition-fast;
+}

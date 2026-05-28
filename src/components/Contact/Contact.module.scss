@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.contact {
+  @include section-padding;
+  background: $light;
+  color: $text-dark;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgText {
+  position: absolute;
+  bottom: -3rem; right: -2rem;
+  font-family: $font-display;
+  font-size: 16rem;
+  color: rgba(0, 184, 212, 0.06);
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.inner {
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto
+}
+
+.heading {
+  @include display-heading;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  margin:1rem auto 1.5rem auto;
+
+  em {
+    font-style: normal;
+    color: $cyan-dim;
+  }
+}
+
+.sub {
+  font-size: 1rem;
+  color: $text-body;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.email {
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: $text-dark;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 2px solid $cyan-dim;
+  padding-bottom: 0.2rem;
+  letter-spacing: 0.02em;
+  transition: color $transition-fast;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.social {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $text-muted;
+  text-decoration: none;
+  transition: color $transition-fast;
+}
