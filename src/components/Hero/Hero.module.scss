@@ -171,7 +171,7 @@
   position: relative;
   width: 100%;
   //max-width: 520px;
-  aspect-ratio: 5 / 4;   // ← maintains shape on all screens
+  aspect-ratio: 5.5 / 4;   // ← maintains shape on all screens
   //overflow: hidden;
 
   @media (max-width: $bp-mobile) {
