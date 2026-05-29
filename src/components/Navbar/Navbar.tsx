@@ -31,7 +31,7 @@ export default function Navbar() {
       </ul>
 
       <motion.a
-        href="/resume.pdf"
+        href="/Resume.pdf"
         className={styles.cta}
         download
         initial={{ opacity: 0 }}
