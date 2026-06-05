@@ -51,6 +51,11 @@ body {
     opacity: 0.8;
   }
 }
+.semi-heading{
+  font-size: 2rem;
+  color: $dark;
+  margin-bottom: 1rem;
+}
 
 // Utility
 .max-w { @include max-width; }

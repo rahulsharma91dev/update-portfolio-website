@@ -36,7 +36,7 @@ export default function About() {
         >
           <p className="section-label">01 — About Me</p>
           <h2 className={styles.heading}>
-            CREATIVE<br />DEVELOPER<br />BY <em>PASSION</em>
+FRONTEND<br />DEVELOPER<br />BY <em>PASSION</em>
           </h2>
         </motion.div>
 

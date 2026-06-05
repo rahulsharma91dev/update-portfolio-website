@@ -29,9 +29,9 @@ export default function Navbar() {
           </motion.li>
         ))}
       </ul>
-
+      <div className={styles.navbutton}>
       <motion.a
-        href="/Resume.pdf"
+        href="/Rahul_Sharma_Resume.pdf"
         className={styles.cta}
         download
         initial={{ opacity: 0 }}
@@ -41,6 +41,19 @@ export default function Navbar() {
       >
         Download CV
       </motion.a>
+      <motion.a
+        href="https://www.linkedin.com/in/rahul-sharma-3a493778/"
+        className={styles.cta}
+        target='_blank'
+        download
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9 }}
+        whileHover={{ scale: 1.04 }}
+      >
+       LinkedIn
+      </motion.a>
+      </div>
     </motion.nav>
   )
 }

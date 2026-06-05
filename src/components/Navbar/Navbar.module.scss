@@ -16,6 +16,12 @@
     padding: 1rem $section-pad-x-mobile;
   }
 }
+.navbutton{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 10px;
+}
 
 .logo {
   font-family: $font-mono;

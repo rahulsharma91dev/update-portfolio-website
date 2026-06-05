@@ -19,21 +19,20 @@ export default function Hero() {
       {/* LEFT — Text */}
       <div className={styles.content}>
         <motion.p className={styles.tag} {...fadeUp(0.2)}>
-          Frontend Developer — Open to Work
+        Senior Frontend Developer | UI Engineer
         </motion.p>
-
+        <motion.p className={styles.role} {...fadeUp(0.6)}>
+        Hi, I'm 
+        </motion.p>
         <motion.h1 className={styles.name} {...fadeUp(0.4)}>
           RAHUL<br />
           <span className={styles.cyan}>SHARMA</span>
         </motion.h1>
 
-        <motion.p className={styles.role} {...fadeUp(0.6)}>
-          I BUILD FOR THE WEB
-        </motion.p>
+     
 
         <motion.p className={styles.desc} {...fadeUp(0.8)}>
-          Crafting pixel-perfect, performant digital experiences with React,
-          modern CSS, and a relentless eye for detail.
+        Building scalable, responsive and accessible web applications with HTML5, SCSS, JavaScript, React.js and Next.js.
         </motion.p>
 
         <motion.div className={styles.actions} {...fadeUp(1.0)}>

@@ -18,6 +18,16 @@
   margin-top: 1rem;
 }
 
+.gridParent {
+  display: grid;
+  @include max-width;
+  row-gap: 2rem;
+  margin:0px auto
+}
+.skillcategoryheading{
+  font-size: clamp(1rem, 1.2vw, 5rem);
+  margin-bottom: 1rem;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

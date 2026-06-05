@@ -11,13 +11,9 @@ export const navLinks = [
 ]
 
 export const skills = [
-   { icon: '🧱', name: 'HTML5' },
-  { icon: '🎨', name: 'CSS3 / SCSS' },  
-  { icon: '🟨', name: 'JavaScript' },
-  { icon: '⚛️', name: 'React' },
+  
   { icon: '🔷', name: 'TypeScript' },
   { icon: '🌊', name: 'Tailwind' },
-  { icon: '▲',  name: 'Next.js' },
   { icon: '🐙', name: 'Git' },
   { icon: '🌐', name: 'REST APIs' },
   { icon: '🐍', name: 'Python' },
@@ -26,10 +22,50 @@ export const skills = [
   { icon: '🖼️', name: 'Figma' }
 ]
 
+export const skillSet = [
+  {
+    category: "Frontend Engineering",
+    skills: [
+      { icon: "🧱", name: "HTML5" },
+      { icon: "🎨", name: "CSS3 / SCSS" },
+      { icon: "🟨", name: "JavaScript ES6+" },
+      { icon: "⚛️", name: "React.js" },
+      { icon: "▲", name: "Next.js" },
+      { icon: "🔄", name: "Redux Toolkit" },
+    ],
+  },
+
+  {
+    category: "UI Engineering",
+    skills: [
+      { icon: "📐", name: "Responsive Design" },
+      { icon: "♿", name: "Web Accessibility" },
+      { icon: "🧩", name: "Cross Browser Compatibility" },
+      { icon: "🎯", name: "Pixel Perfect UI" },
+      {icon:"a", name:"Component Architecture"},
+      { icon: "🖼️", name: "Figma Conversion" },
+    ],
+  },
+
+  {
+    category: "Tools & Workflow",
+    skills: [
+      
+    
+      { icon: "🌿", name: "Git" },
+      { icon: "🐙", name: "GitHub/GitLab" },
+      { icon: "📦", name: "NPM" },
+      { icon: "⚡", name: "Aigle/Scrum" },
+      { icon: "🤖", name: "AI Tools" },
+
+    ],
+  },
+];
+
 export const projects = [
   {
     num: '001',
-    title: 'Health Care',
+    title: 'Enterprise Healthcare Platform',
     desc: 'The project is an eye care service management application designed to streamline and optimize operations for healthcare providers. It offers a comprehensive set of modules to manage both clinical and administrative workflows efficiently.',
     tags: ['HTML5','CSS3', 'React JS', 'Redux'],
     // live: '#',
@@ -55,21 +91,21 @@ export const projects = [
 
 export const experience = [
   {
-    date: '2020 — Present',
-    role: 'ASSOCIATE DEVELOPER',
+    date: 'Oct 2020 — PJune 2026',
+    role: 'Senior Frontend Developer',
     company: 'Globallogic',
     type: 'Full-time',
-    desc: 'Contributing to a large-scale Healthcare project since joining, building and maintaining responsive frontend interfaces using React.js. Consistently leveled up from core HTML/CSS skills to modern React architecture, including component design, state management, and performance optimization.',
+    desc: 'Contributed to a large-scale enterprise healthcare application by developing responsive, reusable frontend components using HTML5, SCSS, JavaScript, and React.js. Improved UI consistency through scalable styling practices, component-based development, Git workflows, and collaboration with cross-functional teams.',
   },
   {
-    date: '2016 — 2020',
+    date: 'Dec 2016 — June 2020',
     role: 'SR. SOFTWARE ENGINEER',
     company: 'Chetu India Pvt. Ltd.',
     type: 'Full-Time',
-    desc: 'Delivered frontend solutions across multiple projects including Casino and Shuttle Service platforms. Translated design mockups into pixel-perfect, responsive interfaces using HTML, CSS, JavaScript, jQuery, and Bootstrap. Coordinated effectively with development and QA teams, attended client meetings, and ensured smooth project delivery.',
+    desc: 'Delivered responsive frontend solutions across multiple domains using HTML, CSS, JavaScript, jQuery, and Bootstrap. Built pixel-perfect interfaces, collaborated with teams, and contributed to successful project delivery.',
   },
   {
-    date: '2024 — 2016',
+    date: 'June 2014 — Dec 2016',
     role: 'WEB DEVELOPMENT TRAINER',
     company: 'Attitude Tally Academy',
     type: 'Full-Time',

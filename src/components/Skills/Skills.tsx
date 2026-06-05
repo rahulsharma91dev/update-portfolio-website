@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { skills } from '@/lib/data'
+import { skillSet } from '@/lib/data'
 import styles from './Skills.module.scss'
 
 export default function Skills() {
@@ -21,8 +21,28 @@ export default function Skills() {
         <h2 className={styles.heading}>WHAT I<br />WORK WITH</h2>
       </motion.div>
 
-      <div className={styles.grid}>
-        {skills.map((skill, i) => (
+      <div className={styles.gridParent}>
+        {skillSet.map((skillC) =>(
+           <div  key={skillC.category}>
+           <h2 className={`section-label ${styles.skillcategoryheading}`}>{skillC.category}</h2>
+          <div className={styles.grid}>
+          {skillC.skills.map((skill,i) =>(
+              <motion.div
+              key={skill.name}
+              className={styles.chip}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              whileHover={{ y: -6, borderColor: 'var(--cyan)' }}
+            >
+              <div className={styles.icon}>{skill.icon}</div>
+              <div className={styles.name}>{skill.name}</div>
+            </motion.div>
+          ))}
+          </div>
+        </div>
+       ) )}
+        {/* {skills.map((skill, i) => (
           <motion.div
             key={skill.name}
             className={styles.chip}
@@ -34,7 +54,7 @@ export default function Skills() {
             <div className={styles.icon}>{skill.icon}</div>
             <div className={styles.name}>{skill.name}</div>
           </motion.div>
-        ))}
+        ))} */}
       </div>
     </section>
   )
