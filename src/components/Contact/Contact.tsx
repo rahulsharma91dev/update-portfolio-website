@@ -22,7 +22,7 @@ export default function Contact() {
         <h2 className={styles.heading}>
           LET'S<br /><em>WORK</em> TOGETHER
         </h2>
-        <h3 className='semi-heading'> Open to Frontend Developer / UI Engineer opportunities.</h3>
+        <h3 className='semi-heading'> Open to work: Frontend Developer / UI Engineer opportunities.</h3>
         <p className={styles.sub}>
        
           Have a project in mind, a role to fill, or just want to say hello?
