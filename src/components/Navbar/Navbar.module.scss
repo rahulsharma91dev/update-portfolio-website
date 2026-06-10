@@ -28,8 +28,10 @@
   font-size: 1.1rem;
   color: $cyan;
   letter-spacing: 0.05em;
+ 
 
   span:first-child { color: $white; }
+  @media (max-width: $bp-mobile) {  font-size: 1rem;}
 }
 
 .blink {
@@ -72,6 +74,10 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all $transition-fast;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media (max-width: $bp-mobile) {  padding: 0.5rem; }
 
   &:hover {
     background: $cyan;
