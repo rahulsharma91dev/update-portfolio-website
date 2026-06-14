@@ -99,7 +99,7 @@ export const experience = [
   },
   {
     date: 'Dec 2016 — June 2020',
-    role: 'SR. SOFTWARE ENGINEER',
+    role: 'Senior SOFTWARE ENGINEER',
     company: 'Chetu India Pvt. Ltd.',
     type: 'Full-Time',
     desc: 'Delivered responsive frontend solutions across multiple domains using HTML, CSS, JavaScript, jQuery, and Bootstrap. Built pixel-perfect interfaces, collaborated with teams, and contributed to successful project delivery.',

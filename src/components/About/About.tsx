@@ -47,7 +47,7 @@ FRONTEND<br />DEVELOPER<br />BY <em>PASSION</em>
           animate={inView ? 'visible' : 'hidden'}
         >
           <p className={styles.text}>
-            9+ years. Multiple roles. One constant — building things for the web.
+            10+ years. Multiple roles. One constant — building things for the web.
 From teaching web design to students, to engineering interfaces at Chetu India Pvt. Ltd., my journey has been hands-on from day one. I've translated mockups into responsive frontends, collaborated with dev and QA teams, and sat in client meetings turning vague requirements into real, working products.
 My stack: HTML · CSS · JavaScript · React.js · jQuery · Bootstrap · Responsive Design.
 
