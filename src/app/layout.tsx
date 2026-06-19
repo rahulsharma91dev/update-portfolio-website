@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     siteName: 'itsrahulsharma.com',
     type: 'website',
   },
+   other: {
+    "google-adsense-account": "ca-pub-4350118092267439",
+  },
 }
 
 export default function RootLayout({
