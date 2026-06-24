@@ -49,9 +49,7 @@ export const skillSet = [
 
   {
     category: "Tools & Workflow",
-    skills: [
-      
-    
+    skills: [    
       { icon: "🌿", name: "Git" },
       { icon: "🐙", name: "GitHub/GitLab" },
       { icon: "📦", name: "NPM" },
@@ -103,14 +101,7 @@ export const experience = [
     company: 'Chetu India Pvt. Ltd.',
     type: 'Full-Time',
     desc: 'Delivered responsive frontend solutions across multiple domains using HTML, CSS, JavaScript, jQuery, and Bootstrap. Built pixel-perfect interfaces, collaborated with teams, and contributed to successful project delivery.',
-  },
-  {
-    date: 'June 2014 — Dec 2016',
-    role: 'WEB DEVELOPMENT TRAINER',
-    company: 'Attitude Tally Academy',
-    type: 'Full-Time',
-    desc: 'Trained aspiring developers in core web technologies including HTML, CSS, JavaScript, and responsive design principles. Designed structured course content and mentored students to build job-ready skills for a career in the IT industry.',
-  },
+  }
 ]
 
 export const socials = [
