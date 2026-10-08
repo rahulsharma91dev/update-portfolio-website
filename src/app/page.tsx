@@ -1,23 +1,24 @@
-import Navbar from '@/components/Navbar/Navbar'
-import Hero from '@/components/Hero/Hero'
-import About from '@/components/About/About'
-import Skills from '@/components/Skills/Skills'
-import Projects from '@/components/Projects/Projects'
-import Experience from '@/components/Experience/Experience'
-import Contact from '@/components/Contact/Contact'
-import Footer from '@/components/Footer/Footer'
+import LeftPanel from "@/shell/LeftPanel";
+import RightNav from "@/shell/RightNav";
+import Home from "@/modules/home/Home";
+import About from "@/modules/about/About";
+import Skills from "@/modules/skills/Skills";
+import Projects from "@/modules/projects/Projects";
+import Contact from "@/modules/contact/Contact";
 
-export default function Home() {
+export default function Page() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
-    </main>
-  )
+    <>
+      <div className="wedge" aria-hidden="true" />
+      <LeftPanel />
+      <main className="content">
+        <Home />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <RightNav />
+    </>
+  );
 }

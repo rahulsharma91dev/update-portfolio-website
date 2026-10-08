@@ -1,53 +1,36 @@
-import type { Metadata } from 'next'
-import { Bebas_Neue, DM_Sans, JetBrains_Mono } from 'next/font/google'
-import '../styles/globals.scss'
-import Cursor from '@/components/Cursor/Cursor'
+import type { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
+import { Poppins } from "next/font/google";
+import "@/styles/main.scss";
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-display',
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-body',
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-mono',
-})
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
-  title: 'Rahul Sharma — Frontend Developer',
-  description: 'Frontend Developer crafting pixel-perfect, performant digital experiences with React, Next.js, and modern CSS.',
+  metadataBase: new URL("https://www.itsrahulsharma.com"),
+  title: "Rahul Sharma — Senior Frontend Developer",
+  description:
+    "Senior Frontend Developer with 9+ years of experience building scalable, responsive healthcare interfaces with React.js, TypeScript and Redux.",
   openGraph: {
-    title: 'Rahul Sharma — Frontend Developer',
-    description: 'Crafting pixel-perfect digital experiences.',
-    url: 'https://itsrahulsharma.com',
-    siteName: 'itsrahulsharma.com',
-    type: 'website',
+    title: "Rahul Sharma — Senior Frontend Developer",
+    description: "Scalable, responsive healthcare interfaces with React.js and TypeScript.",
+    url: "https://www.itsrahulsharma.com",
+    siteName: "itsrahulsharma.com",
+    type: "website",
   },
-   other: {
-    "google-adsense-account": "ca-pub-4350118092267439",
-  },
-}
+  twitter: { card: "summary", title: "Rahul Sharma — Senior Frontend Developer" },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = { themeColor: "#0F0F0F" };
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
-      <body>
-        <Cursor />
-        {children}
-      </body>
+    <html lang="en" className={poppins.variable}>
+      <body>{children}</body>
     </html>
-  )
+  );
 }

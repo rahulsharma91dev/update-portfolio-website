@@ -1,0 +1,102 @@
+@use "variables" as *;
+
+.wedge {
+  position: fixed; top: 0; left: 0; width: 300px; height: 300px; z-index: 0;
+  background: $accent; clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+// ---- Left personal panel (fixed) ----
+@keyframes slide-in { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: none; } }
+
+.left-panel {
+  position: fixed; z-index: 5; top: $gutter; bottom: $gutter; left: $gutter; width: $panel-w;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+  background: $surface; border: 1px solid $border; border-radius: 28px; overflow: hidden;
+  animation: slide-in 0.9s $ease both;
+
+  &__media { position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, #454545, #1a1a1a 45%, #0d0d0d); }
+  &__initials { position: absolute; inset: 0; display: grid; place-items: center; font-size: 150px; font-weight: 700; color: #2f2f2f; }
+  &__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.05); }
+  &__shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, $bg 92%); }
+  &__logo { position: absolute; top: 28px; left: 28px; font-weight: 700; font-size: 22px; color: $accent; }
+  &__social { position: absolute; top: 28px; right: 24px; display: flex; flex-direction: column; gap: 12px; }
+  &__status {
+    position: absolute; left: 0; top: 240px; display: flex; align-items: center; gap: 8px;
+    writing-mode: vertical-rl; transform: rotate(180deg); padding: 14px 8px; font-size: 13px;
+    background: $surface; border: 1px solid $border; border-radius: 0 12px 12px 0;
+  }
+  &__dot { width: 9px; height: 9px; border-radius: 50%; background: $ok; }
+  &__body { position: relative; display: flex; flex-direction: column; gap: 14px; }
+  &__title { font-size: 26px; font-weight: 600; line-height: 1.25; min-height: 2.5em; display: flex; align-items: flex-end; }
+  &__text { color: $muted; font-size: 14px; }
+  &__details { font-style: normal; color: $muted; font-size: 13px; line-height: 1.7; padding-top: 12px; border-top: 1px solid $border; word-break: break-word; }
+  &__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+}
+
+.typing__cursor { color: $accent; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: $surface-2; border: 1px solid $border-2; transition: background 0.3s, color 0.3s;
+  &:hover { background: $accent; color: $on-accent; }
+}
+.round-btn {
+  width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: $accent; color: $on-accent; transition: transform 0.3s $ease;
+  &:hover { transform: rotate(45deg); }
+  &--muted { background: $surface-2; color: $text; }
+}
+.pill-btn {
+  display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 22px;
+  border: 0; border-radius: 999px; background: $accent; color: $on-accent; font-weight: 600; font-size: 14px;
+  transition: transform 0.3s $ease, box-shadow 0.3s;
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba($accent, 0.3); }
+  &:disabled { opacity: 0.6; cursor: wait; }
+}
+.link-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; &:hover { color: $accent; } }
+.outline-btn {
+  display: inline-flex; align-items: center; gap: 14px; padding: 5px 5px 5px 26px; border: 1.5px solid $accent;
+  border-radius: 999px; font-weight: 600; font-size: 14px; text-transform: uppercase; transition: background 0.3s;
+  &:hover { background: rgba($accent, 0.1); }
+  &--muted { border-color: $border-2; }
+}
+
+// ---- Right navigation dock (fixed) ----
+.nav-dock {
+  position: fixed; z-index: 10; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 20px;
+
+  &__btn {
+    position: relative; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+    background: #1c1c1c; color: $text; border: 1px solid $border-2;
+    transition: background 0.35s, color 0.35s, transform 0.35s $ease;
+    &:hover { transform: scale(1.1); }
+    &--active { background: $accent; color: $on-accent; border-color: $accent; }
+  }
+  &__tip {
+    position: absolute; right: 60px; padding: 4px 12px; border-radius: 8px; white-space: nowrap; font-size: 12px;
+    background: $surface-2; border: 1px solid $border-2; opacity: 0; transform: translateX(8px);
+    pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+  }
+  &__btn:hover &__tip, &__btn:focus-visible &__tip { opacity: 1; transform: none; }
+}
+
+.progress { position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 3px; background: transparent;
+  &__bar { height: 100%; background: $accent; transform: scaleX(0); transform-origin: left; } }
+
+// ---- Page content column ----
+.content { position: relative; z-index: 1; margin-left: $panel-w + $gutter * 2; margin-right: $dock-w; }
+
+@include down($bp-lg) {
+  .wedge { width: 180px; height: 180px; }
+  .left-panel { position: relative; inset: auto; width: auto; min-height: 560px; margin: 16px; }
+  .content { margin: 0 16px; }
+  .nav-dock {
+    top: auto; bottom: 12px; right: 50%; transform: translateX(50%); flex-direction: row; gap: 10px;
+    padding: 8px 12px; border-radius: 999px; background: rgba($surface, 0.92); border: 1px solid $border;
+    backdrop-filter: blur(8px);
+    &__btn { width: 44px; height: 44px; }
+    &__tip { display: none; }
+  }
+}

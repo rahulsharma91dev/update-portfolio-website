@@ -1,69 +1,20 @@
-// ============================================
-// DESIGN TOKENS — itsrahulsharma.com
-// ============================================
+// Design tokens (yellow on neutral black)
+$accent: #ffb400;
+$on-accent: #1a1200;
+$bg: #0f0f0f;
+$surface: #171717;
+$surface-2: #1f1f1f;
+$border: #2b2b2b;
+$border-2: #3a3a3a;
+$text: #f5f5f5;
+$muted: #a3a3a3;
+$ok: #34d399;
 
-// Colors
-$cyan:        #00e5ff;
-$cyan-dim:    #00b8d4;
-$cyan-glow:   rgba(0, 229, 255, 0.15);
+$panel-w: 400px;
+$gutter: 24px;
+$dock-w: 110px;
+$bp-lg: 1024px;
+$ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-$dark:        #080c10;
-$dark2:       #0d1117;
-$dark3:       #141b24;
-
-$light:       #f0f4f8;
-$light2:      #e2e8f0;
-
-$text-dark:   #0a0f14;
-$text-muted:  #64748b;
-$text-body:   #374151;
-
-$white:       #ffffff;
-
-// Typography
-$font-display: 'Bebas Neue', sans-serif;
-$font-body:    'DM Sans', sans-serif;
-$font-mono:    'JetBrains Mono', monospace;
-
-// Spacing
-$section-pad-x: 4rem;
-$section-pad-y: 7rem;
-$section-pad-x-mobile: 1.5rem;
-$section-pad-y-mobile: 5rem;
-
-$max-width: 1100px;
-
-// Breakpoints
-$bp-mobile: 768px;
-$bp-tablet: 1024px;
-
-// Transitions
-$transition-fast:   0.2s ease;
-$transition-medium: 0.3s ease;
-$transition-slow:   0.7s ease;
-
-// Mixins
-@mixin section-padding {
-  padding: $section-pad-y $section-pad-x;
-
-  @media (max-width: $bp-mobile) {
-    padding: $section-pad-y-mobile $section-pad-x-mobile;
-  }
-}
-
-@mixin max-width {
-  max-width: $max-width;
-}
-
-@mixin mono-label {
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-@mixin display-heading {
-  font-family: $font-display;
-  letter-spacing: 0.02em;
-  line-height: 0.95;
-}
+@mixin up($bp) { @media (min-width: $bp) { @content; } }
+@mixin down($bp) { @media (max-width: $bp - 1px) { @content; } }

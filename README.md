@@ -1,99 +1,44 @@
-# itsrahulsharma.com
+# Rahul Sharma — Portfolio (Next.js + TypeScript + SCSS/BEM)
 
-Personal portfolio website for Rahul Sharma — Frontend Developer.
+Single-page dashboard portfolio: fixed left personal panel, fixed right navigation dock,
+scrolling content in the middle. Content comes from the resume (`src/data/profile.ts`).
 
-**Tech Stack:** Next.js 14 (App Router) · TypeScript · SCSS Modules · Framer Motion
-
----
-
-## 🚀 Getting Started
-
-### 1. Install dependencies
+## Run
 ```bash
 npm install
+npm run dev        # http://localhost:3000
+npm run build && npm start
 ```
 
-### 2. Run dev server
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000)
+## Before you deploy
+1. Copy your profile photo to `public/skills-images.png` (same file the old site used) — or change `photo` in `src/data/profile.ts`.
+2. Copy your resume PDF to `public/Rahul_Sharma_Resume.pdf` (Download CV button).
+3. Copy `.env.example` to `.env.local` and fill:
+   - `NEXT_PUBLIC_FORMSPREE_ID` — create a free form at formspree.io, paste its id (without it the form opens a mailto link).
+   - `NEXT_PUBLIC_PROJECTS_REMOTE_URL` — full URL of your separately deployed project.
+4. Deploy on Vercel: import the repo, add the same env vars, deploy.
 
-### 3. Build for production
-```bash
-npm run build
-npm start
-```
-
----
-
-## 📁 Project Structure
-
+## Architecture (micro-frontend ready)
 ```
 src/
-├── app/
-│   ├── layout.tsx        # Root layout, fonts, metadata
-│   └── page.tsx          # Main page — assembles all sections
-├── components/
-│   ├── Cursor/           # Custom animated cursor
-│   ├── Navbar/           # Sticky nav with smooth scroll
-│   ├── Hero/             # Full-screen hero section
-│   ├── About/            # About + stats
-│   ├── Skills/           # Tech stack grid
-│   ├── Projects/         # Project cards
-│   ├── Experience/       # Timeline
-│   ├── Contact/          # Contact + socials
-│   └── Footer/           # Footer
-├── lib/
-│   └── data.ts           # ← EDIT THIS to update all content
-└── styles/
-    ├── _variables.scss   # Design tokens, mixins
-    └── globals.scss      # Global styles
+  app/        layout, page, robots, sitemap
+  shell/      LeftPanel (fixed), RightNav (fixed dock + scroll engine)
+  modules/    home | about | skills | projects | contact   <- one folder per section
+  shared/     Section, Icon, Typing, CountUp, gsap, useScrollEngine
+  data/       profile.ts (all content), sections.ts, remote-projects.ts
+  styles/     SCSS, BEM naming (block__element--modifier)
 ```
+- The **shell** (left panel + nav + scroll engine) never changes when you add sections.
+- The **Projects** section renders every entry in `src/data/remote-projects.ts`.
+  Your separate project is built and deployed on its own, and loaded here by URL (iframe).
+  Later you can switch `RemoteProject.tsx` to Module Federation or Next.js Multi-Zones without touching other modules.
 
----
+## Animations
+- Third-party (scroll only): **Lenis** (smooth scroll, animated jump on nav click) and **GSAP ScrollTrigger**
+  (active nav icon, top progress bar, reveal-on-scroll).
+- Own CSS/React (no library): typing effect, count-up stats, hover effects.
+- All motion turns off with `prefers-reduced-motion`.
 
-## ✏️ How to Update Content
-
-All portfolio content lives in **`src/lib/data.ts`**.
-
-- **Skills** → edit the `skills` array
-- **Projects** → edit the `projects` array
-- **Experience** → edit the `experience` array
-- **Socials** → edit the `socials` array
-- **Email** → edit the `email` constant
-
----
-
-## 🎨 Design Tokens
-
-Edit `src/styles/_variables.scss` to change:
-- Colors (`$cyan`, `$dark`, `$light`, etc.)
-- Fonts (`$font-display`, `$font-body`, `$font-mono`)
-- Spacing (`$section-pad-x`, `$section-pad-y`)
-
----
-
-## 🚢 Deploy to Vercel
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Add custom domain in Vercel dashboard
-# Set itsrahulsharma.com → your Vercel project
-```
-
----
-
-## 📦 Dependencies
-
-| Package | Purpose |
-|---------|---------|
-| `next` | Framework (App Router) |
-| `framer-motion` | Animations |
-| `sass` | SCSS support |
-| `typescript` | Type safety |
+## Google AdSense
+Removed. If you want it back later: add the AdSense script with `next/script` in `src/app/layout.tsx`
+and place one ad unit in the footer area, not inside the fixed panels.

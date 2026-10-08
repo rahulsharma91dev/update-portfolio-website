@@ -1,0 +1,31 @@
+@use "variables" as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: $bg; }
+body {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid $accent; outline-offset: 3px; }
+
+// Lenis smooth-scroll helpers
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+.u-accent { color: $accent; }
+.u-hidden { position: absolute; left: -9999px; opacity: 0; }
+
+// Reveal-on-scroll (GSAP sets the final state; only active when JS is running)
+.js-anim [data-reveal] { opacity: 0; transform: translateY(40px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
