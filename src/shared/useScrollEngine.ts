@@ -47,11 +47,7 @@ export function useScrollEngine(ids: string[]) {
     document.documentElement.classList.add("js-anim");
 
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
-<<<<<<< HEAD
-    lenisRef.current = lenis;
-=======
     registerLenis(lenis);
->>>>>>> dbcc10a... update the src file
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -75,32 +71,11 @@ export function useScrollEngine(ids: string[]) {
     return () => {
       gsap.ticker.remove(tick);
       lenis.destroy();
-<<<<<<< HEAD
-      lenisRef.current = null;
-=======
       registerLenis(null);
->>>>>>> dbcc10a... update the src file
       document.documentElement.classList.remove("js-anim");
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [ids]);
 
-<<<<<<< HEAD
-  const scrollTo = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(el, {
-        duration: 1.4,
-        easing: (t: number) => 1 - Math.pow(1 - t, 4),
-      });
-    } else {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
-
-  return { active, scrollTo };
-=======
   return { active };
->>>>>>> dbcc10a... update the src file
 }
