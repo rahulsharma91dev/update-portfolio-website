@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import "bootstrap/dist/css/bootstrap-grid.min.css";
 import "@/styles/main.scss";
 
 const poppins = Poppins({

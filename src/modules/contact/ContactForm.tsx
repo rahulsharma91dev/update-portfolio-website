@@ -40,6 +40,9 @@ export default function ContactForm() {
       <label className="contact-form__field" htmlFor="cf-email">Email
         <input id="cf-email" name="email" type="email" className="contact-form__input" required autoComplete="email" />
       </label>
+      <label className="contact-form__field" htmlFor="cf-phone">Phone
+        <input id="cf-phone" name="phone" type="tel" className="contact-form__input" required autoComplete="phone" />
+      </label>
       <label className="contact-form__field" htmlFor="cf-message">Message
         <textarea id="cf-message" name="message" className="contact-form__input contact-form__input--area" rows={4} required />
       </label>

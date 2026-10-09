@@ -7,14 +7,14 @@ export default function Projects() {
   return (
     <Section id="projects">
       <SectionHead id="projects" index="03" label="Projects" title="Things I've" accent="built" />
-      <div className="grid" data-reveal>
+      <div className="row g-3" data-reveal>
         {profile.projects.map((p) => (
-          <article className="card card--project" key={p.no}>
+          <div className="col-12 col-md-6" key={p.no}><article className="card card--project">
             <p className="card__label">{p.no}</p>
             <h3 className="card__title">{p.title}</h3>
             <p className="card__meta">{p.text}</p>
             <Chips items={p.tags} />
-          </article>
+          </article></div>
         ))}
       </div>
       {remoteProjects.length === 0 ? <RemoteProject /> : remoteProjects.map((r) => <RemoteProject key={r.id} project={r} />)}

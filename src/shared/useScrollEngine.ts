@@ -1,7 +1,8 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "./gsap";
+import { registerLenis } from "./scroll";
 
 /**
  * Third-party animation layer (scroll only):
@@ -10,9 +11,11 @@ import { gsap, ScrollTrigger } from "./gsap";
  */
 export function useScrollEngine(ids: string[]) {
   const [active, setActive] = useState(ids[0]);
-  const lenisRef = useRef<Lenis | null>(null);
-
   useEffect(() => {
+    // single-page site: never keep a #section in the address bar
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     ids.forEach((id) => {
@@ -44,7 +47,11 @@ export function useScrollEngine(ids: string[]) {
     document.documentElement.classList.add("js-anim");
 
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+<<<<<<< HEAD
     lenisRef.current = lenis;
+=======
+    registerLenis(lenis);
+>>>>>>> dbcc10a... update the src file
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -68,12 +75,17 @@ export function useScrollEngine(ids: string[]) {
     return () => {
       gsap.ticker.remove(tick);
       lenis.destroy();
+<<<<<<< HEAD
       lenisRef.current = null;
+=======
+      registerLenis(null);
+>>>>>>> dbcc10a... update the src file
       document.documentElement.classList.remove("js-anim");
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [ids]);
 
+<<<<<<< HEAD
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -88,4 +100,7 @@ export function useScrollEngine(ids: string[]) {
   }, []);
 
   return { active, scrollTo };
+=======
+  return { active };
+>>>>>>> dbcc10a... update the src file
 }

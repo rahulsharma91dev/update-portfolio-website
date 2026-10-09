@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import Icon from "@/shared/Icon";
+import ScrollLink from "@/shared/ScrollLink";
 import Typing from "@/shared/Typing";
 import Photo from "./Photo";
 
@@ -25,8 +26,8 @@ export default function LeftPanel() {
           {profile.location}<br />{profile.email}<br />{profile.phone}
         </address>
         <div className="left-panel__actions">
-          <a className="round-btn" href="#contact" aria-label="Go to contact"><Icon name="arrowUpRight" /></a>
-          <a className="pill-btn" href="#contact">Let&apos;s talk</a>
+          <ScrollLink to="contact" className="round-btn" label="Go to contact"><Icon name="arrowUpRight" /></ScrollLink>
+          <ScrollLink to="contact" className="pill-btn">Let&apos;s talk</ScrollLink>
           <a className="link-btn" href={profile.cvUrl} download><Icon name="download" />Download CV</a>
         </div>
       </div>

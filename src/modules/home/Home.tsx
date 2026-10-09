@@ -1,6 +1,7 @@
 import { profile } from "@/data/profile";
 import Icon from "@/shared/Icon";
 import CountUp from "@/shared/CountUp";
+import ScrollLink from "@/shared/ScrollLink";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
         </h2>
         <p className="hero__text" data-reveal>{profile.heroIntro}</p>
         <div className="hero__actions" data-reveal>
-          <a className="outline-btn" href="#projects">View my work<span className="round-btn"><Icon name="arrowRight" /></span></a>
-          <a className="outline-btn outline-btn--muted" href="#about">More about me<span className="round-btn round-btn--muted"><Icon name="arrowRight" /></span></a>
+          <ScrollLink to="projects" className="outline-btn">View my work<span className="round-btn"><Icon name="arrowRight" /></span></ScrollLink>
+          <ScrollLink to="about" className="outline-btn outline-btn--muted">More about me<span className="round-btn round-btn--muted"><Icon name="arrowRight" /></span></ScrollLink>
         </div>
         <dl className="stats" data-reveal>
           {profile.stats.map((s) => (
